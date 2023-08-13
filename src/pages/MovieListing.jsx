@@ -1,7 +1,7 @@
 import { useContext, useState } from "react"
 import { MovieContext } from "../contexts/MovieProvider";
 import { AddMovie } from "../components/AddMovie";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export function MovieListing()
 {
@@ -10,7 +10,7 @@ export function MovieListing()
     const [releaseYear,setYear] = useState("all");
     const [ratings,setRatings] = useState("all");
     const [addModal,setAddModal] = useState(false);
-
+    const navigate = useNavigate();
     let availableGenre = movieList?.reduce((initVal,current)=>[...initVal,...current.genre],[]);
     availableGenre = [...new Set(availableGenre)];
     const checkWatchList = (movieObj)=>{
@@ -74,6 +74,7 @@ export function MovieListing()
         
         {addModal && <AddMovie setModal={setAddModal}/>}
         <h3>Movies</h3>
+        <div className="filters">
         <select onChange={(e)=>setGenre(e.target.value)}>
             <option value="allGenre">All Genre</option>
             {availableGenre?.map(element=>
@@ -95,12 +96,13 @@ export function MovieListing()
             <option value="8-10">Greater than 8</option>
         </select>
         <button  onClick={()=>setAddModal(true)}>Add Movie</button>
+        </div>
         
         <div className="movie-container">
             {displayMovies?.map((movie)=>{
-                const {imageURL,summary,title } = movie;
+                const {id,imageURL,summary,title } = movie;
                 return (
-                <div className="movie-card">
+                <div className="movie-card" onClick={()=>navigate(`movieDetails/${id}`)}>
                     <img className="movie-image" src={imageURL} alt="movie-poster" />
                     <div>{title}</div>
                     <div>{summary}</div>

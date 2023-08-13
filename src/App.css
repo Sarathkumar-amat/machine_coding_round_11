@@ -18,6 +18,15 @@
   justify-content: space-between;
   align-items: stretch;
   border: 1px solid black;
+  cursor: pointer;
+}
+.all-detail-container{
+  margin-top:20px;
+  display: flex;
+}
+.movie-poster{
+  height: 400px;
+  width: 400px;
 }
 .add-buttons{
   display: flex;
@@ -62,6 +71,11 @@
   color:white;
   text-decoration: none;
   margin:0px 10px;
+}
+.filters{
+  display: flex;
+  justify-content: space-between;
+  margin:10px;
 }
 .cast-list{
   clear:both; 

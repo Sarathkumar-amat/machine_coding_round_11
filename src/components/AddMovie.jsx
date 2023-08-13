@@ -65,6 +65,7 @@ export function AddMovie({setModal})
             const newList = [...movieList,{...movieData,id:uuid()}];
             setMovieList(newList);
             localStorage.setItem("allMovies",JSON.stringify(newList));
+            setModal(false);
         }
     }
     return (<div className="add-movie-overlay">
