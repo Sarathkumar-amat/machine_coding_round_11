@@ -14,9 +14,9 @@ export function WatchLater()
                 const {imageURL,summary,title } = movie;
                 return (
                 <div className="movie-card">
-                    <img className="movie-image" src={imageURL} alt="movie-poster" />
-                    <div>{title}</div>
-                    <div>{summary}</div>
+                     <img className="movie-image" src={imageURL} alt="movie-poster" />
+                    <div className="movie-title">{title}</div>
+                    <div className="movie-summary">{summary}</div>
                     <div className="add-buttons">
                        {checkWatchList(movie) && <button onClick={()=>handleRemoveWatchList(movie)}>
                         Remove from watchList

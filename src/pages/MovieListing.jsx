@@ -102,10 +102,10 @@ export function MovieListing()
             {displayMovies?.map((movie)=>{
                 const {id,imageURL,summary,title } = movie;
                 return (
-                <div className="movie-card" onClick={()=>navigate(`movieDetails/${id}`)}>
-                    <img className="movie-image" src={imageURL} alt="movie-poster" />
-                    <div>{title}</div>
-                    <div>{summary}</div>
+                <div className="movie-card">
+                    <img className="movie-image" src={imageURL} alt="movie-poster" onClick={()=>navigate(`movieDetails/${id}`)}/>
+                    <div className="movie-title">{title}</div>
+                    <div className="movie-summary">{summary}</div>
                     <div className="add-buttons">
                        {checkWatchList(movie) && <button onClick={()=>handleRemoveWatchList(movie)}>
                         Remove from watchList
